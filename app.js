@@ -6,13 +6,15 @@ let formatDate = today.toDateString();
 let selectElement = document.getElementById('date');
 selectElement.innerHTML = formatDate;
 
-function drag(ev) {
+function dragStart(ev) {
     var letterData = ev.target.getAttribute('data-letter');
+    var style = window.getComputedStyle(event.target, null);
     ev.dataTransfer.setData("id", ev.target.id);
     ev.dataTransfer.setData("letter", letterData);
+    event.dataTransfer.setData("text/plain", (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY));
 }
 
-function allowDrop(ev) {
+function dragOver(ev) {
     ev.preventDefault();
 }
 
@@ -22,12 +24,17 @@ function drop(ev) {
     var thisLetter = ev.target.getAttribute('data-letter');
     var draggedId = ev.dataTransfer.getData("id");
     var draggedLetter = ev.dataTransfer.getData("letter");
+    var offset = event.dataTransfer.getData("text/plain").split(',');
     if (draggedLetter == thisLetter) {
         document.getElementById(draggedId).style.display = 'none';
         document.getElementById(thisId).classList.add('okLetter');
+
+    } else {
         
+        document.getElementById(draggedId).style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
+        document.getElementById(draggedId).style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
     }
-  }
+}
 
 function createTable() {
 
@@ -36,7 +43,7 @@ function createTable() {
     var nameLen = inputName.length;
     var width = (100 / nameLen).toString() + '%';
     var hiddenNb = parseInt(document.getElementById("inputHiddenNb").value);
-    var body = document.getElementsByTagName('body')[0];
+    var mainContainer = document.getElementById("divContent");
 
     // Hide the form
     form.style.display = 'none';
@@ -51,14 +58,14 @@ function createTable() {
         td.id = 'gameLetter' + i.toString();
         td.classList.add('gameLetter');
         td.setAttribute('data-letter', inputName.charAt(i));
-        td.addEventListener('dragover', allowDrop);
+        td.addEventListener('dragover', dragOver);
         td.addEventListener('drop', drop);
         td.appendChild(document.createTextNode(inputName.charAt(i)));
         tr.appendChild(td);
     }
     tbody.appendChild(tr);
     table.appendChild(tbody);
-    body.appendChild(table);
+    mainContainer.appendChild(table);
 
     //Create the source tables
     var div = document.createElement('div');
@@ -67,8 +74,8 @@ function createTable() {
         var table = document.createElement('table');
         table.draggable = true;
         table.classList.add('sourceTable');
-        table.id = 'sourceTable' + i.toString();
-        table.addEventListener('dragstart', drag);
+        table.id = `sourceTable${i.toString()}`;
+        table.addEventListener('dragstart', dragStart);
         table.setAttribute('data-letter', inputName.charAt(i));
         var tbody = document.createElement('tbody');
         var tr = document.createElement('tr');
@@ -80,5 +87,8 @@ function createTable() {
         table.appendChild(tbody);
         div.appendChild(table);
     }
-    body.appendChild(div);
+    mainContainer.appendChild(div);
+
+    document.body.addEventListener('dragover', dragOver, false);
+    document.body.addEventListener('drop', drop, false);
 }

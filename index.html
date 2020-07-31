@@ -8,20 +8,30 @@
 </head>
 
 <body>
-    <h1>Test Heading</h1>
-    <p id="date"></p>
+    <div id="divFlex">
+        <div id="divFlexUp">
+            I take up the remaining height.
+        </div>
+        <div id="divContent">
+            <h1>Test Heading</h1>
+            <p id="date"></p>
 
-    <form id="formConfig">
-        <label for="inputName">First name:</label><br>
-        <input type="text" name="inputName" id="inputName" value="TIAGO"><br>
-        <label for="inputHiddenNb">Hidden Nb:</label><br>
-        <input type="number" name="inputHiddenNb" id="inputHiddenNb" value=0><br><br>
-        <input type="button" onclick="createTable()" value="Go!">
-        <input type="reset">
-    </form>
+            <form id="formConfig">
+                <label for="inputName">First name:</label><br>
+                <input type="text" name="inputName" id="inputName" value="TIAGO"><br>
+                <label for="inputHiddenNb">Hidden Nb:</label><br>
+                <input type="number" name="inputHiddenNb" id="inputHiddenNb" value=0><br><br>
+                <input type="button" onclick="createTable()" value="Go!">
+                <input type="reset">
+            </form>
 
-    <script src="app.js"></script>
-    <noscript>You need to enable JavaScript to view the full site.</noscript>
+            <script src="app.js"></script>
+            <noscript>You need to enable JavaScript to view the full site.</noscript>
+        </div>
+        <div id="divFlexDown">
+            I take down the remaining height.
+        </div>
+    </div>
 </body>
 
 </html>
