@@ -39,6 +39,10 @@ li {
     color: green;
 }
 
+.moveLetter {
+    cursor: move;
+}
+
 .gameLetter {
     border: 1px solid black;
     min-width: 100px;
