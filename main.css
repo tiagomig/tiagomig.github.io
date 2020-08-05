@@ -3,6 +3,8 @@ html, body {
     height: 100%;
     width: 100%;
     margin: 0;
+    overscroll-behavior: none; /* Disables pull-to-refresh and overscroll/rubberband glow effects. */
+    position: fixed;
 }
 
 h1 {

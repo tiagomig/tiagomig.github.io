@@ -6,33 +6,33 @@ let formatDate = today.toDateString();
 let selectElement = document.getElementById('date');
 selectElement.innerHTML = formatDate;
 
-function dragStart(ev) {
+function dragStart (ev) {
     var letterData = ev.target.getAttribute('data-letter');
-    var style = window.getComputedStyle(event.target, null);
+    var style = window.getComputedStyle(ev.target, null);
     ev.dataTransfer.setData("id", ev.target.id);
     ev.dataTransfer.setData("letter", letterData);
-    event.dataTransfer.setData("text/plain", (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY));
+    ev.dataTransfer.setData("text/plain", (parseInt(style.getPropertyValue("left"), 10) - ev.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - ev.clientY));
 }
 
-function dragOver(ev) {
+function dragOver (ev) {
     ev.preventDefault();
 }
 
-function drop(ev) {
+function drop (ev) {
     ev.preventDefault();
     var thisId = ev.target.id;
     var thisLetter = ev.target.getAttribute('data-letter');
     var draggedId = ev.dataTransfer.getData("id");
     var draggedLetter = ev.dataTransfer.getData("letter");
-    var offset = event.dataTransfer.getData("text/plain").split(',');
+    var offset = ev.dataTransfer.getData("text/plain").split(',');
     if (draggedLetter == thisLetter) {
         document.getElementById(draggedId).style.display = 'none';
         document.getElementById(thisId).classList.add('okLetter');
 
     } else {
         
-        document.getElementById(draggedId).style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
-        document.getElementById(draggedId).style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
+        document.getElementById(draggedId).style.left = (ev.clientX + parseInt(offset[0], 10)) + 'px';
+        document.getElementById(draggedId).style.top = (ev.clientY + parseInt(offset[1], 10)) + 'px';
     }
 }
 
