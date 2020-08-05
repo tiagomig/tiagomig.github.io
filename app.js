@@ -81,6 +81,7 @@ function createTable() {
         var tr = document.createElement('tr');
         var td = document.createElement('td');
         td.classList.add('gameLetter');
+        td.classList.add('moveLetter');
         td.appendChild(document.createTextNode(inputName.charAt(i)));
         tr.appendChild(td);
         tbody.appendChild(tr);
