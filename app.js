@@ -1,10 +1,7 @@
 'use strict';
 console.log('Here\'s a hidden message');
 
-let today = new Date();
-let formatDate = today.toDateString();
-let selectElement = document.getElementById('date');
-selectElement.innerHTML = formatDate;
+var g_nbLettersOk = 0;
 
 function dragStart (ev) {
     var letterData = ev.target.getAttribute('data-letter');
@@ -25,9 +22,20 @@ function drop (ev) {
     var draggedId = ev.dataTransfer.getData("id");
     var draggedLetter = ev.dataTransfer.getData("letter");
     var offset = ev.dataTransfer.getData("text/plain").split(',');
+
+    // If it is the same letter
     if (draggedLetter == thisLetter) {
+
+        // Mask the source letter
         document.getElementById(draggedId).style.display = 'none';
+
+        // Flag the destination letter as OK
         document.getElementById(thisId).classList.add('okLetter');
+
+        // Increment the correct letters
+        g_nbLettersOk += 1;
+
+        //Check if all the letters are ok
 
     } else {
         
@@ -41,7 +49,6 @@ function createTable() {
     var form = document.getElementById("formConfig");
     var inputName = document.getElementById("inputName").value;
     var nameLen = inputName.length;
-    var width = (100 / nameLen).toString() + '%';
     var hiddenNb = parseInt(document.getElementById("inputHiddenNb").value);
     var mainContainer = document.getElementById("divContent");
 

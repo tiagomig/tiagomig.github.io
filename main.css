@@ -5,6 +5,7 @@ html, body {
     margin: 0;
     overscroll-behavior: none; /* Disables pull-to-refresh and overscroll/rubberband glow effects. */
     position: fixed;
+    overflow: hidden;
 }
 
 h1 {
