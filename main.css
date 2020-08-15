@@ -64,6 +64,10 @@ li {
     /* margin-bottom: 100px; */
 }
 
+.hiddenLetter {
+    color: transparent;
+}
+
 .okLetter {
     color: green;
 }
