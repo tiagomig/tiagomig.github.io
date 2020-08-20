@@ -1,28 +1,11 @@
 html, body {
-    font-family: helvetica;
+    font-family: clarendon, helvetica, serif;
     height: 100%;
     width: 100%;
     margin: 0;
     overscroll-behavior: none; /* Disables pull-to-refresh and overscroll/rubberband glow effects. */
     position: fixed;
     overflow: hidden;
-}
-
-h1 {
-    font-family: helvetica;
-    color: blue;
-}
-
-ul {
-    font-family: monospace;
-}
-
-li {
-    list-style: circle;
-}
-
-.list {
-    list-style: square;
 }
 
 #formConfig {
@@ -64,19 +47,19 @@ li {
     /* margin-bottom: 100px; */
 }
 
-.hiddenLetter {
+td.hiddenLetter {
     color: transparent;
 }
 
-.okLetter {
-    color: green;
+td.okLetter {
+    background-color: greenyellow;
 }
 
-.moveLetter {
+td.moveLetter {
     cursor: move;
 }
 
-.gameLetter {
+td.gameLetter {
     border: 1px solid black;
     min-width: 100px;
     width: 100px;
@@ -95,7 +78,7 @@ li {
     display: inline-table;
 }*/
 
-.sourceTable {
+table.sourceTable {
     position: absolute;
     left: 0;
     top: 0;

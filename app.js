@@ -52,6 +52,22 @@ function drop(ev) {
     }
 }
 
+function onGameLetterClick(ev) {
+    const colours = ['black', 'blue', 'chartreuse', 'darkorange', 'deeppink', 'gold', 'sienna'];
+    var thisId = ev.target.id;
+    var currentColour = document.getElementById(thisId).style.color;
+    var currentColourIdx = colours.indexOf(currentColour);
+    var newColourIdx = 0;
+    if (currentColourIdx > -1) {
+        newColourIdx = currentColourIdx + 1;
+        if (newColourIdx >= colours.length) {
+            newColourIdx = 0;
+        }
+        document.getElementById(thisId).style.color = colours[newColourIdx];
+    }
+}
+
+
 function createTable() {
 
     var form = document.getElementById("formConfig");
@@ -81,10 +97,13 @@ function createTable() {
         td.setAttribute('data-letter', g_inputName.charAt(i));
         td.addEventListener('dragover', dragOver);
         td.addEventListener('drop', drop);
+        td.addEventListener('click', onGameLetterClick);
 
         // If hidden, mark the letter to be invisible
         if (nameLen - i <= hiddenNb) {
             td.classList.add('hiddenLetter');
+        } else {
+            td.style.color = 'black';
         }
 
         // Add text
