@@ -11,7 +11,7 @@ function onYouTubePlayerAPIReady() {
         width: '100%',
         height: '100%',
         videoId: 'P7ipjEOdceM',
-        // host: 'https://www.youtube-nocookie.com',
+        host: 'https://www.youtube-nocookie.com',
         playerVars: {
             'start': 0,
             'autoplay': 0,
