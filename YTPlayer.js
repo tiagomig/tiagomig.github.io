@@ -10,7 +10,7 @@ function onYouTubePlayerAPIReady() {
     youtubePlayer = new YT.Player('ytplayer', {
         width: '100%',
         height: '100%',
-        // videoId: 'P7ipjEOdceM',
+        videoId: 'P7ipjEOdceM',
         // host: 'https://www.youtube-nocookie.com',
         playerVars: {
             'start': 0,
@@ -24,7 +24,8 @@ function onYouTubePlayerAPIReady() {
         },
         events: {
             'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            'onStateChange': onPlayerStateChange,
+            'onError': onPlayerError
         }
     });
 }
@@ -52,3 +53,7 @@ function onPlayerStateChange(event) {
 function stopVideo() {
     youtubePlayer.stopVideo();
 } */
+
+function onPlayerError(event) {
+    console.log("YTPlayer error with code" + event.data);
+    }
