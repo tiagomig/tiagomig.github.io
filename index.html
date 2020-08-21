@@ -9,29 +9,37 @@
 
 <body>
     <div id="divFlex">
-        <div id="divFlexUp">
-            I take up the remaining height.
-        </div>
+        <div id="divFlexUp"></div>
         <div id="divContent">
-            <form id="formConfig">
-                <label for="inputName">First name:</label><br>
+            <form id="formConfig" name="configureForm">
+                <label for="inputName">First name:</label>
                 <input type="text" name="inputName" id="inputName" value="TIAGO"><br>
-                <label for="inputHiddenNb">Hidden Nb:</label><br>
-                <input type="number" name="inputHiddenNb" id="inputHiddenNb" value=0><br><br>
-                <input type="button" onclick="createTable()" value="Go!">
+                <label for="inputHiddenNb">Hidden Nb:</label>
+                <input type="number" name="inputHiddenNb" id="inputHiddenNb" value=0><br>
+                <label for="forceOrder">Force order:</label>
+                <input type="checkbox" name="forceOrder" id="forceOrder" value=false><br><br>
+                <label for="videoId">YouTube video ID:</label>
+                <input type="text" name="videoId" id="videoId" value="P7ipjEOdceM"><br>
+                <label for="videoStart">Video start (seconds):</label>
+                <input type="number" name="videoStart" id="videoStart" value=10><br>
+                <label for="videoEnd">Video end (seconds):</label>
+                <input type="number" name="videoEnd" id="videoEnd" value=20><br><br>
+                <input type="button" value="Play!" onclick="createTable()">
                 <input type="reset">
+                <input type="button" value="Test video" onclick="testVideo()">
             </form>
 
-            <!--iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1XG0QoXbshU?autoplay=1&controls=0&start=183&mute=0&showinfo=0&rel=0" frameborder="0" allow="autoplay" allowfullscreen></iframe-->
-
+            <script src="https://www.youtube.com/player_api"></script>
             <script src="app.js"></script>
             <script src="DragDropTouch.js"></script>
-            <!--script src="touchEvents.js"></script-->
+            <script src="YTPlayer.js"></script>
             <noscript>You need to enable JavaScript to view the full site.</noscript>
         </div>
-        <div id="divFlexDown">
-            I take down the remaining height.
-        </div>
+        <div id="divFlexDown"></div>
+    </div>
+    <div id="divVideoContainer">
+        <!-- The <iframe> (and video player) will replace this <div> tag. -->
+        <div id="ytplayer" />
     </div>
 </body>
 

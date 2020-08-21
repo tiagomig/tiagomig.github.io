@@ -1,5 +1,5 @@
 html, body {
-    font-family: clarendon, helvetica, serif;
+    font-family: /* clarendon, */ helvetica, serif;
     height: 100%;
     width: 100%;
     margin: 0;
@@ -66,6 +66,8 @@ td.gameLetter {
     font-size: 100px;
     font-weight: bold;
     text-align: center;
+    user-select: none;
+    cursor: default;
 }
 
 /*.sourceTable {
@@ -97,4 +99,22 @@ table.sourceTable {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#divVideoContainer {
+    background: #000;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -99;
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+#ytplayer {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
 }
